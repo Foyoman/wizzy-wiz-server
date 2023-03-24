@@ -8,6 +8,8 @@ import mongoose from 'mongoose';
 
 import router from './router';
 
+require('dotenv').config();
+
 const app = express();
 
 app.use(cors({
@@ -19,9 +21,10 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 const server = http.createServer(app);
+const port = process.env.PORT || 8080; 
 
 server.listen(8080, () => {
-	console.log('Server running on http://localhost:8080/');
+	console.log(`Server running on http://localhost:${port}/`);
 });
 
 const MONGO_URL = `mongodb+srv://edwardtdo:${process.env.MONGOPW}@cluster0.lp1okvt.mongodb.net/?retryWrites=true&w=majority`;
